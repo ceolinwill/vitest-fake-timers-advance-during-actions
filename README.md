@@ -1,5 +1,7 @@
 # Vitest 5.1 browser actions advance fake timers for their whole duration
 
+Reported upstream: https://github.com/vitest-dev/vitest/issues/11910
+
 Since Vitest 5.1.0 (vitest-dev/vitest#11242), every locator action in Browser Mode advances fake timers by 50 ms every 50 ms of real time while the action runs, even when the element already exists. A test that freezes the clock with `vi.useFakeTimers()` can no longer keep it frozen across `await locator.click()`: the fake clock moves by however long the click takes in real time. When the click waits for Playwright's actionability checks (here, a button that is still sliding in with a 450 ms CSS transition), the clock moves by roughly a second, and a pending `setTimeout` the test never advanced fires during the click. How far it moves depends on the machine's speed and load, so the same test can pass on one run and fail on the next. `userEvent.keyboard` on the focused element leaves the clock alone. There is no way to opt out per test or per action.
 
 ## Reproduction
