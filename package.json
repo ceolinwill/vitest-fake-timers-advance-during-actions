@@ -1,0 +1,14 @@
+{
+  "name": "vitest-fake-timers-advance-during-actions",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "playwright install chromium",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@vitest/browser-playwright": "5.1.0",
+    "playwright": "1.65.0",
+    "vitest": "5.1.0"
+  }
+}
