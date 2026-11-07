@@ -4,7 +4,7 @@ Since Vitest 5.1.0 (vitest-dev/vitest#11242), every locator action in Browser Mo
 
 ## Reproduction
 
-Requires Node.js 20+.
+Requires Node.js 22.12+ or 24+ (what Vitest 5 supports).
 
 ```sh
 npm install   # also runs `playwright install chromium`
